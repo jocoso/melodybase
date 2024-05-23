@@ -11,3 +11,4 @@ const getAPIData = (url) => {
     return output;
     
 }
+
