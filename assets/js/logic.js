@@ -7,14 +7,18 @@ function displaySongLyrics(){
     }
 
     const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
-    const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_track=${songName}&q_artist=${artistName}&apikey=${apiKey}`; //Identifies the track that the user searched
+    const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&callback=call&q_artist=Taylor Swift&q_track=I Can Do It With a Broken Heart&f_has_lyrics=true&f_has_subtitle=true&apikey=db1815126935bc7fef98a221fafbf0fe`; //Identifies the track that the user searched
 
-    const data = getAPIData(apiUrl);
+    const data = getAPIData(apiUrl, apiKey);
+    console.log(data);
 };
 
-$(document).ready(function () {
+$(function () {
     $('#searchButton').on('click', displaySongLyrics);
+    displaySongLyrics();
 });
+
+
 
 
 
