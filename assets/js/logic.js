@@ -1,24 +1,39 @@
 function displaySongLyrics(){
-    // const songName = $('#songname').val().trim(); //Using placeholder IDs
-    // const artistName = $('#artistname').val().trim();
+    const songName = $('#songname').val().trim(); //Using placeholder IDs
+    const artistName = $('#artistname').val().trim();
     
-    // if(songName === '' || artistName === ''){ //Ends function 
-    //     return;
-    // }
+    if(songName === '' || artistName === ''){ //Ends function 
+        return;
+    }
 
-    // const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
-    // const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&callback=call&q_artist=Taylor Swift&q_track=I Can Do It With a Broken Heart&f_has_lyrics=true&f_has_subtitle=true&apikey=db1815126935bc7fef98a221fafbf0fe`; //Identifies the track that the user searched
+    const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
+    const apiUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_track=${songName}&q_artist=${artistName}&apikey=${apiKey}`; //Identifies the track that the user searched
 
-    // const data = getAPIData(apiUrl, apiKey);
-    // console.log(data);
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const trackList = data.message.body.track_list; //Finds the tracklist based on the response using MusixMatch
+            if (trackList.length === 0){
+                document.getElementById('lyrics').innerHTML = '<p>No lyrics found for this song.</p>';
+                return;
+            }
+            const trackId = trackList[0].track.track_id; //Accesses the ID of the track using MusixMatch
+            const getLyrics = `https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackId}&apikey=${apiKey}`;
+            return fetch(getLyrics); //Returns the found lyrics
+        })
+        .then(response => response.json())
+        .then(data => {
+            const lyrics = data.message.body.lyrics.lyrics_body; //Finds the lyrics based on the inputted song using MusixMatch
+            $('#lyrics').html(`<p>${lyrics}</p>`); //Displays the lyrics in the HTML
+        })
+        .catch(error => {
+            $('#lyrics').html(`<p>We couldn't find the lyrics for this song: ${error.message}.</p>`); //Displays an error if there are no lyrics
+        });
 };
 
-$(function () {
-    // $('#searchButton').on('click', displaySongLyrics);
-    // displaySongLyrics();
+$(document).ready(function () {
+    $('#searchButton').on('click', displaySongLyrics);
 });
-
-
 
 
 

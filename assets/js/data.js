@@ -36,9 +36,9 @@ const getAPIData = async function(url, auth) {
 /**
  * Given a song and artist name, this function returns a Promise
  * with all the data about the song from the API
- * @param {string} songname 
- * @param {string} artistname 
- * @param {string} auth 
+ * @param {string} songname The name of the song
+ * @param {string} artistname The name of the artist
+ * @param {string} auth The APIKey
  * @returns {Promise} The API promises to return the track
  */
 const getTrack = function(songname, artistname, auth) {
