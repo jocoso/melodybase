@@ -33,6 +33,14 @@ const getAPIData = async function(url, auth) {
 
 }
 
+/**
+ * Given a song and artist name, this function returns a Promise
+ * with all the data about the song from the API
+ * @param {string} songname 
+ * @param {string} artistname 
+ * @param {string} auth 
+ * @returns {Promise} The API promises to return the track
+ */
 const getTrack = function(songname, artistname, auth) {
     const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&callback=call&q_artist=${artistname}&q_track=${songname}&f_has_lyrics=true&f_has_subtitle=true&apikey=${auth}`;
 
