@@ -1,49 +1,77 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Melodybase</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel = "stylesheet"  href ="./assets/css/style.css"/>
-</head>
-<body>
-  <header>
-  <h1>MelodyBase<h1>
-  </header>
-  <main>
-    <section>
-      <div>
-        <h2>Find Music here </h2>
-        <form id="#songname" id="#artistname">
-          <input type="text" placeholder="Find Music here" />
-          <button id="myBtn" >Ok </button>
-        </form>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body class="backgroundcolor has-background-grey">
+    <header>
+      <h1 class="title has-text-centered is-uppercase">MelodyBase</h1>
+      <h2 class="subtitle has-text-centered is-uppercase is-italic">
+        Your ultimate music library
+      </h2>
+    </header>
+    <main>
+      <section>
+        <div class="container">
+          <h2 class="subtitle py-6">Find Music here</h2>
+
+          <button class="button is-primary is-rounded" id="findMusic">
+            Find your music here
+          </button>
+        </div>
+
+        <div class="album">
+          <img src=" ./assets/images/album-download.png" alt="placeholder" />
+        </div>
+        <h2 class="">Album Name</h2>
+
+        <div class="container-songname">
+          <h3>Song Name</h3>
+        </div>
+        <div class="container-artistname">
+          <h3>Artist name</h3>
+        </div>
+        <div class="container-lyrics">
+          <h3>Lyrics</h3>
+        </div>
+      </section>
+      <div class="modal is active">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+          <h3 class="title mb-6">Enter song name</h3>
+          <form>
+            <div class="field">
+              <label class="label"> Name of the song</label>
+              <div class="control">
+                <input type="text" class="input" placeholder="Name" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Artist Name</label>
+              <div class="control">
+                <input type="text" class="input" placeholder="Artist Name" />
+              </div>
+
+              <button class="button is-primary is-rounded" id="search"> Search</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </section>
-    <div class ="album">
-      <img src=" ./assets/images/album-download.png"  alt ="placeholder">
-    </div>
-    <h2> Album Name</h2>
-    <section>
-      <div class ="container-songname">
-        <h3> Song Name </h3>
-      </div>
-      <div class ="container-artistname">
-        <h3>Artist name</h3>
-      </div>
-      <div class ="container-lyrics">
-        <h3> Lyrics</h2>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p> MelodyBase Corporation </p>
-  </footer>
-  <div class ="modal is-active">
-    <div class ="modal-background"></div>
-    <div class ="modal-content has background-white py-5 px-5"></div>
-  </div>
-  <script src="logic.js"></script>
-</body>
+    </main>
+    <footer>
+      <p>MelodyBase Corporation</p>
+    </footer>
+
+    <script src="./assets/js/logic.js"></script>
+  </body>
 </html>

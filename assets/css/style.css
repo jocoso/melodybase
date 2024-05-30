@@ -1,5 +1,12 @@
 
 
+.root{
+     background: rgb(136, 213, 241) url("gfg_logo.png") center no-repeat fixed;
+}
+
+
+
+
 /* header {
     display : flex;
     justify-content :center;
@@ -27,7 +34,7 @@ footer {
 
 
 
-/*
+
 @media screen and (max-width: 768px) {
     main,
     nav {
