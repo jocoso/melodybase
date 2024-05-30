@@ -14,4 +14,31 @@ describe('Testing the functionality, this is calling musixmatch', ()=>{
   });
 
   
+describe('Testing that we could get the track information using one function', () => {
+    it('should return an object', () => {
+        const songName = 'I Can Do It With a Broken Heart';
+        const artistName = 'Taylor Swift';
+        const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
 
+        const track = getTrack(songName, artistName, apiKey);
+
+        expect(track != null).toBe(true);
+
+    });
+
+    it('console.log four of the music data we will need', () => {
+        const songName = 'I Can Do It With a Broken Heart';
+        const artistName = 'Taylor Swift';
+        const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
+
+        const track = getTrack(songName, artistName, apiKey)
+            .then(data => {
+                console.log(data);
+                console.log(data.album_id);
+                console.log(data.album_name);
+            })
+
+        expect(track != null).toBe(true);
+
+    })
+});

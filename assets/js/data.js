@@ -21,22 +21,28 @@ const getAPIData = async function(url, auth) {
     try {
 
         // fetch data from the api and return a promise.
-        const response = await fetch(targetUrl, {
+        return await fetch(targetUrl, {
             method: "GET",
             mode: "cors",
             headers: header,
-        }).then(response => response.json())
-        .then(json => {return json;}).then(result => {
-            return result.message.body;
-        }).catch(
-            error => { throw new Error("ERROR:" + error);}
-        );
-
-        return response;
+        }).then(res => {return res.json()})
 
     } catch(error) {
         throw new Error('Error fetching data:', error);
     }
+
+}
+
+const getTrack = function(songname, artistname, auth) {
+    const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&callback=call&q_artist=${artistname}&q_track=${songname}&f_has_lyrics=true&f_has_subtitle=true&apikey=${auth}`;
+
+    return getAPIData(apiUrl, auth).then(
+        (data) => {
+            return data.message.body.track;
+        }
+    ).catch((error) => {
+        throw new Error('Error fetching track:', error);
+    });
 
 }
 
