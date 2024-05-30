@@ -1,0 +1,36 @@
+
+
+/* header {
+    display : flex;
+    justify-content :center;
+    height : 90px;
+    background-color: rgb(28, 13, 144);
+    margin-top: -10px;
+    margin-bottom: 100px;
+    color: white
+}
+   
+body{
+    background-color: rgb(174, 209, 238);
+}
+
+
+footer {
+    display : flex;
+    justify-content: center;
+    padding: 30px;
+    clear: both;
+    font-family: "Times New Roman", Times, serif, Arial, sans-serif;
+    text-align: center;
+    background-color: rosybrown;
+} */
+
+
+
+/*
+@media screen and (max-width: 768px) {
+    main,
+    nav {
+      flex-direction: column;
+    }
+}
