@@ -1,21 +1,21 @@
 function displaySongLyrics(){
-    const songName = $('#songname').val().trim(); //Using placeholder IDs
-    const artistName = $('#artistname').val().trim();
+    // const songName = $('#songname').val().trim(); //Using placeholder IDs
+    // const artistName = $('#artistname').val().trim();
     
-    if(songName === '' || artistName === ''){ //Ends function 
-        return;
-    }
+    // if(songName === '' || artistName === ''){ //Ends function 
+    //     return;
+    // }
 
-    const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
-    const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&callback=call&q_artist=Taylor Swift&q_track=I Can Do It With a Broken Heart&f_has_lyrics=true&f_has_subtitle=true&apikey=db1815126935bc7fef98a221fafbf0fe`; //Identifies the track that the user searched
+    // const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
+    // const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&callback=call&q_artist=Taylor Swift&q_track=I Can Do It With a Broken Heart&f_has_lyrics=true&f_has_subtitle=true&apikey=db1815126935bc7fef98a221fafbf0fe`; //Identifies the track that the user searched
 
-    const data = getAPIData(apiUrl, apiKey);
-    console.log(data);
+    // const data = getAPIData(apiUrl, apiKey);
+    // console.log(data);
 };
 
 $(function () {
-    $('#searchButton').on('click', displaySongLyrics);
-    displaySongLyrics();
+    // $('#searchButton').on('click', displaySongLyrics);
+    // displaySongLyrics();
 });
 
 
