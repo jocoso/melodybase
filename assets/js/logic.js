@@ -1,31 +1,22 @@
 async function displaySongInfo(songName, artistName) {
     try {
-        const track = getTrack(songName, artistName, "db1815126935bc7fef98a221fafbf0fe");
-
-        // if (track) {
-        //     const lyricsUrl = `https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${track.track_id}&apikey=${apiKey}`;
-        //     const lyricsResponse = await $.getJSON(lyricsUrl);
-        //     const lyrics = lyricsResponse.message.body.lyrics ? lyricsResponse.message.body.lyrics.lyrics_body : 'Lyrics not found';
-
-        //     $('#container-songname').text(songName);
-        //     $('#container-artistname').text(artistName);
-        //     $('#container-albumcover').attr('src', track.album_coverart_350x350 || '');
-        //     $('#container-albumname').text(track.album_name || 'Unknown Album');
-        //     $('#container-lyrics').text(lyrics);
+        const track = await getTrack(songName, artistName, "db1815126935bc7fef98a221fafbf0fe");
+        if (track) {
+            $('#songname').text(`Song Name: ${songName}`);
+            $('#artistname').text(`Artist Name: ${artistName}`);
+            // $('#albumcover').attr('src', track.album_coverart_350x350 || '');
+            $('#albumname').text(`Album Name: ${track.album_name}`);
+            $('#lyrics').text(`Lyrics: ${track.has_lyrics}`);
         
-        // } else {
-        //     $('#lyrics').text('Track not found');
-        // }
+        } else {
+            $('#lyrics').text('Lyrics: Track not found');
+        }
 
-        track.then((data) => {
-            console.log(data);
-        }).catch((error) => {
-            console.log(error);
-        })
+        console.log(track);
         
     } catch (error) {
         console.error('Error displaying song info:', error);
-        $('#lyrics').text('Error fetching data');
+        $('#lyrics').text('Lyrics: Error fetching data');
     }
 }
 
