@@ -53,6 +53,3 @@ const getTrack = function(songname, artistname, auth) {
     });
 
 }
-
-
-
