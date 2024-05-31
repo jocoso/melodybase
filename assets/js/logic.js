@@ -1,6 +1,7 @@
 async function displaySongInfo(songName, artistName) {
     try {
         const track = await getTrack(songName, artistName, "db1815126935bc7fef98a221fafbf0fe");
+
         if (track) {
             $('#songname').text(`Song Name: ${songName}`);
             $('#artistname').text(`Artist Name: ${artistName}`);
@@ -39,10 +40,14 @@ $(document).ready(() => {
     $('#field').on("submit", (e) => {
         e.preventDefault();
 
+        // Getting user input...
         const songName = $('input[type=text][name=container-songname]').val();
         const artistName = $('input[type=text][name=container-artistname]').val();
 
+        // TODO: Erase this!
         console.log(songName, "  ", artistName);
+
+        // Sanity check
         if (songName && artistName) {
             displaySongInfo(songName, artistName);
         } else {
