@@ -20,12 +20,8 @@ async function displaySongInfo(songName, artistName) {
     }
 }
 
-
-
-
 $(document).ready(() => {
     // Modal handling
-    console.log('I exists');
     const $findMusicBtn = $('#findMusic');
     const $modalBg = $('.modal-background');
     const $modal = $('.modal');
