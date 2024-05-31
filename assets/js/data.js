@@ -54,5 +54,24 @@ const getTrack = function(songname, artistname, auth) {
 
 }
 
+/**
+ * Given a track identification number and the apikey string
+ * returns all the track data.
+ * @param {string} trackId ID number of the track
+ * @param {string} auth The API KEY
+ * @returns {Promise} The API promises to return the lyrics
+ */
+const getLyrics = function(trackId, auth) {
+    const apiUrl = `https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackId}&apikey=${auth}`;
+
+    return getAPIData(apiUrl, auth).then(
+        (trackdata) => {
+            return trackdata;
+        }
+    ).catch((error) => {
+        throw new Error('Error fetching track:', error);
+    })
+}
+
 
 

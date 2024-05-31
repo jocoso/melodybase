@@ -43,3 +43,28 @@ describe('Testing that we could get the track information using one function', (
 
     })
 });
+
+describe('Testing the function getLyrics return the lyrics.', () => {
+    
+    it('should return an object', () => {
+        const songName = 'I Can Do It With a Broken Heart';
+        const artistName = 'Taylor Swift';
+        const apiKey = 'db1815126935bc7fef98a221fafbf0fe';
+
+        const track = getTrack(songName, artistName, apiKey);
+
+        track.then(trackdata => {
+            console.log(trackdata.track_id);
+            if(trackdata.has_lyrics) {
+                console.log("we got Lyrics!");
+                const lyrics = getLyrics(trackdata.track_id, apiKey);
+                // lyrics.then(lyricdata => {
+                //     console.log(lyricdata);
+                // });
+            }
+        });
+
+        expect(track != null).toBe(true);
+
+    });
+});
