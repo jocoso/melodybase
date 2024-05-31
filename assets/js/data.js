@@ -52,7 +52,6 @@ const getTrack = function(songname, artistname, auth) {
         throw new Error('Error fetching track:', error);
     });
 
-}
 
 /**
  * Given a track identification number and the apikey string

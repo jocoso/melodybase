@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
-    <body class="backgroundcolor has-background-grey">
+    <body>
     <header>
         <h1 class="title has-text-centered is-uppercase">MelodyBase</h1>
         <h2 class="subtitle has-text-centered is-uppercase is-italic">
@@ -21,10 +21,11 @@
         </h2>
     </header>
     <main>
+        
         <section>
             <div class="container">
                 <h2 class="subtitle py-6">Find Music here</h2>
-
+            </div>
                 <button class="button is-primary is-rounded" id="findMusic">
                 Find your music here
                 </button>
@@ -33,16 +34,21 @@
             <div class="album">
                 <img src=" ./assets/images/album-download.png" alt="placeholder" />
             </div>
-            <h2 class="">Album Name</h2>
 
-            <div id="container-songname">
+            <div id="songname">
                 <h3>Song Name</h3>
             </div>
-            <div id="container-artistname">
+            <div id="artistname">
                 <h3>Artist name</h3>
             </div>
-            <div id="container-lyrics">
+            <div id="lyrics">
                 <h3>Lyrics</h3>
+            </div>
+            <div id="albumcover">
+              <h3>Album Cover</h3>
+            </div>
+            <div id="albumname">
+              <h3>Album Name</h3>
             </div>
             </section>
             <div class="modal isactive">
@@ -70,7 +76,7 @@
             </div>
         </div>
     </section>
-    <div class ="album">
+    <!-- <div class ="album">
         <img src=" ./assets/images/album-download.png"  alt ="placeholder">
     </div>
     <h2> Album Name</h2>
@@ -84,7 +90,7 @@
         <div class ="container-lyrics">
         <h3> Lyrics</h2>
         </div>
-    </section>
+    </section> -->
     </main>
     <footer>
     <p> MelodyBase Corporation </p>
@@ -94,6 +100,10 @@
     <div class ="modal-content has background-white py-5 px-5"></div>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <div class ="modal is-active">
+    <div class ="modal-background"></div> -->
+    <div class ="modal-content has background-white py-5 px-5"></div>
+    </div>
     <script src="./assets/js/logic.js"></script>
     <script src="./assets/js/data.js"></script>
     </body>
