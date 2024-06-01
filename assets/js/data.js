@@ -51,7 +51,7 @@ const getTrack = function(songname, artistname, auth) {
     ).catch((error) => {
         throw new Error('Error fetching track:', error);
     });
-
+}
 
 /**
  * Given a track identification number and the apikey string
@@ -71,6 +71,3 @@ const getLyrics = function(trackId, auth) {
         throw new Error('Error fetching track:', error);
     })
 }
-
-
-

@@ -1,14 +1,26 @@
 async function displaySongInfo(songName, artistName) {
     try {
-        const track = await getTrack(songName, artistName, "db1815126935bc7fef98a221fafbf0fe");
+        const auth = "db1815126935bc7fef98a221fafbf0fe";
+        const track = await getTrack(songName, artistName, auth);
 
         if (track) {
             $('#songname').text(`Song Name: ${songName}`);
             $('#artistname').text(`Artist Name: ${artistName}`);
             // $('#albumcover').attr('src', track.album_coverart_350x350 || '');
             $('#albumname').text(`Album Name: ${track.album_name}`);
-            $('#lyrics').text(`Lyrics: ${track.has_lyrics}`);
-        
+            
+            if (track.has_lyrics) {
+                const lyricsData = await getLyrics(track.track_id, auth);
+                if (lyricsData && lyricsData.message.body.lyrics) {
+                    const lyrics = lyricsData.message.body.lyrics.lyrics_body;
+                    $('#lyrics').text(`Lyrics: ${lyrics}`);
+                } else {
+                    $('#lyrics').text('Lyrics: Not available');
+                }
+            } else {
+                $('#lyrics').text('Lyrics: Not available');
+            }
+
         } else {
             $('#lyrics').text('Lyrics: Track not found');
         }
