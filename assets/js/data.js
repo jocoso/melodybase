@@ -7,31 +7,33 @@
  * 
  */
 const getAPIData = async function(url, auth) {
-    // console.log("I exists...");
-    
     // XXX: Proxy is needed to avoid CORS error
     const proxyUrl = 'https://corsproxy.io/?';
-    const targetUrl = proxyUrl + url;
+    const targetUrl = proxyUrl + encodeURIComponent(url);
     let header = new Headers();
     
-    // TODO: Check if these are needed. If not, erase.
-    header.append('Authorization', `Bearer ${auth}`);
-    header.append('Content-Type', 'application/json');
+    // Headers not needed for this API
+    // header.append('Authorization', `Bearer ${auth}`);
+    // header.append('Content-Type', 'application/json');
     
     try {
-
         // fetch data from the api and return a promise.
-        return await fetch(targetUrl, {
+        const response = await fetch(targetUrl, {
             method: "GET",
             mode: "cors",
             headers: header,
-        }).then(res => {return res.json()})
+        });
 
-    } catch(error) {
-        throw new Error('Error fetching data:', error);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
     }
-
-}
+};
 
 /**
  * Given a song and artist name, this function returns a Promise
@@ -41,17 +43,17 @@ const getAPIData = async function(url, auth) {
  * @param {string} auth The APIKey
  * @returns {Promise} The API promises to return the track
  */
-const getTrack = function(songname, artistname, auth) {
-    const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&callback=call&q_artist=${artistname}&q_track=${songname}&f_has_lyrics=true&f_has_subtitle=true&apikey=${auth}`;
+const getTrack = async function(songname, artistname, auth) {
+    const apiUrl = `https://api.musixmatch.com/ws/1.1/matcher.track.get?format=json&q_artist=${artistname}&q_track=${songname}&f_has_lyrics=true&apikey=${auth}`;
 
-    return getAPIData(apiUrl, auth).then(
-        (data) => {
-            return data.message.body.track;
-        }
-    ).catch((error) => {
-        throw new Error('Error fetching track:', error);
-    });
-}
+    try {
+        const data = await getAPIData(apiUrl, auth);
+        return data.message.body.track;
+    } catch (error) {
+        console.error('Error fetching track:', error);
+        throw error;
+    }
+};
 
 /**
  * Given a track identification number and the apikey string
@@ -60,14 +62,14 @@ const getTrack = function(songname, artistname, auth) {
  * @param {string} auth The API KEY
  * @returns {Promise} The API promises to return the lyrics
  */
-const getLyrics = function(trackId, auth) {
+const getLyrics = async function(trackId, auth) {
     const apiUrl = `https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackId}&apikey=${auth}`;
 
-    return getAPIData(apiUrl, auth).then(
-        (trackdata) => {
-            return trackdata;
-        }
-    ).catch((error) => {
-        throw new Error('Error fetching track:', error);
-    })
-}
+    try {
+        const trackdata = await getAPIData(apiUrl, auth);
+        return trackdata;
+    } catch (error) {
+        console.error('Error fetching lyrics:', error);
+        throw error;
+    }
+};

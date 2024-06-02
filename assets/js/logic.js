@@ -4,14 +4,14 @@ async function displaySongInfo(songName, artistName) {
         const track = await getTrack(songName, artistName, auth);
 
         if (track) {
-            $('#songname').text(`Song Name: ${songName}`);
-            $('#artistname').text(`Artist Name: ${artistName}`);
-            // $('#albumcover').attr('src', track.album_coverart_350x350 || '');
+            $('#songname').text(`Song Name: ${track.track_name}`); //Displaying information to the page. Ensuring capitalization matches the API data rather than using exactly what the user types
+            $('#artistname').text(`Artist Name: ${track.artist_name}`);
             $('#albumname').text(`Album Name: ${track.album_name}`);
+            console.log(track);
             
             if (track.has_lyrics) {
                 const lyricsData = await getLyrics(track.track_id, auth);
-                if (lyricsData && lyricsData.message.body.lyrics) {
+                if (lyricsData && lyricsData.message.body.lyrics) { //Finding lyrics through the API and displaying them
                     const lyrics = lyricsData.message.body.lyrics.lyrics_body;
                     $('#lyrics').text(`Lyrics: ${lyrics}`);
                 } else {
@@ -20,15 +20,11 @@ async function displaySongInfo(songName, artistName) {
             } else {
                 $('#lyrics').text('Lyrics: Not available');
             }
-
         } else {
             $('#lyrics').text('Lyrics: Track not found');
         }
-
-        console.log(track);
-        
     } catch (error) {
-        console.error('Error displaying song info:', error);
+        console.error('Error displaying song info:', error); //Error handling
         $('#lyrics').text('Lyrics: Error fetching data');
     }
 }
@@ -38,7 +34,6 @@ $(document).ready(() => {
     const $findMusicBtn = $('#findMusic');
     const $modalBg = $('.modal-background');
     const $modal = $('.modal');
-
     
     $findMusicBtn.on('click', () => {
         $modal.addClass('is-active');
@@ -47,7 +42,6 @@ $(document).ready(() => {
         $modal.removeClass('is-active');
     });
 
-    console.log('Still alive');
     // Search button handling
     $('#field').on("submit", (e) => {
         e.preventDefault();
@@ -55,9 +49,6 @@ $(document).ready(() => {
         // Getting user input...
         const songName = $('input[type=text][name=container-songname]').val();
         const artistName = $('input[type=text][name=container-artistname]').val();
-
-        // TODO: Erase this!
-        console.log(songName, "  ", artistName);
 
         // Sanity check
         if (songName && artistName) {
