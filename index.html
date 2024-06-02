@@ -1,96 +1,100 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="UTF-8" />
     <title>Melodybase</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-    />
-    <link rel="stylesheet" href="./assets/css/reset.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
 <body>
 
-    <header class="header">
-        <h1 class="title has-text-centered is-uppercase">MelodyBase</h1>
-        <h2 class="subtitle has-text-centered is-uppercase is-italic">
-            Your ultimate music library
-        </h2>
-    </header>
+<header class="header">
+    <h1 class="title has-text-centered is-uppercase">MelodyBase</h1>
+    <h2 class="subtitle has-text-centered is-uppercase is-italic">Your ultimate music library</h2>
+</header>
 
-    <main class="main-content">
-        <section class="section">
-            <div class="container">
-                <div class="buttons is-centered">
-                    <button class="button is-primary is-rounded is-darkblue" id="findMusic">
-                        Find your music here
-                    </button>
+<main class="main-content">
+    <section class="section">
+        <div class="container">
+            <div class="buttons is-centered">
+                <button class="button is-primary is-rounded is-darkblue" id="findMusic">Find your music here</button>
+            </div>
+
+            <div class="columns is-centered is-multiline mt-5">
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <figure class="image is-1by1">
+                            <img src="assets/images/album-download.png" alt="Album placeholder" />
+                        </figure>
+                    </div>
                 </div>
 
-                <div class="columns is-centered is-multiline mt-5">
-                    <div class="column is-one-quarter">
-                        <div class="box">
-                            <figure class="image is-1by1">
-                                <img src="./assets/images/album-download.png" alt="Album placeholder" />
-                            </figure>
-                        </div>
+                <div class="column is-one-quarter">
+                    <div class="box" id="songname">
+                        <!-- Song name displayed here -->
+                        <h3 class="title is-4">Song Name</h3> 
                     </div>
+                </div>
 
-                    <div class="column is-one-quarter">
-                        <div class="box" id="songname">
-                            <h3 class="title is-4">Song Name</h3>
-                        </div>
+                <div class="column is-one-quarter">
+                    <div class="box" id="artistname">
+                        <!-- Artist name displayed here -->
+                        <h3 class="title is-4">Artist Name</h3>
                     </div>
+                </div>
 
-                    <div class="column is-one-quarter">
-                        <div class="box" id="artistname">
-                            <h3 class="title is-4">Artist Name</h3>
-                        </div>
+                <div class="column is-one-quarter">
+                    <div class="box" id="albumname">
+                        <!-- Album name displayed here -->
+                        <h3 class="title is-4">Album Name</h3>
                     </div>
+                </div>
 
-                    <div class="column is-one-quarter">
-                        <div class="box" id="albumname">
-                            <h3 class="title is-4">Album Name</h3>
-                        </div>
+                <div class="column is-full">
+                    <div class="box" id="lyrics">
+                        <!-- Lyrics displayed here -->
+                        <h3 class="title is-4">Lyrics</h3>
                     </div>
+                </div>
 
-                    <div class="column is-full">
-                        <div class="box" id="lyrics">
-                            <h3 class="title is-4">Lyrics</h3>
+                <div class="column is-full">
+                    <div class="box" id="top-tracks">
+                        <h3 class="title is-4">Top Tracks</h3>
+                        <div class="columns is-multiline" id="top-tracks-container">
+                            <!-- Top tracks will be inserted here -->
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <div class="modal isactive">
-            <div class="modal-background"></div>
-            <div class="modal-content has-background-white py-5 px-5">
-                <h3 class="title mb-6">Enter Song Information</h3>
-                <form id="field">
-                    <label class="label">Artist Name</label>
-                    <div class="control">
-                        <input type="text" name="container-artistname" class="input" placeholder="Artist Name" />
-                    </div>
-                    <label class="label">Name of the song</label>
-                    <div class="control">
-                        <input type="text" name="container-songname" class="input" placeholder="Song Name" />
-                    </div>
-                    <input type="submit" value="search">
-                </form>
-            </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p>Powered by Musixmatch API --- Created by Joshua Collado, Tuba Muktadir, and Bo Amarant</p>
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+            <h3 class="title mb-6">Enter Song Information</h3>
+            <form id="field">
+                <label class="label">Artist Name</label>
+                <div class="control">
+                    <input type="text" name="container-artistname" class="input" placeholder="Artist Name" />
+                </div>
+                <label class="label">Name of the song</label>
+                <div class="control">
+                    <input type="text" name="container-songname" class="input" placeholder="Song Name" />
+                </div>
+                <input type="submit" value="search">
+            </form>
         </div>
-    </footer>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Powered by Musixmatch API --- Created by Joshua Collado, Tuba Muktadir, and Bo Amarant</p>
+    </div>
+</footer>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/logic.js"></script>
