@@ -55,6 +55,7 @@ const getTrack = async function(songname, artistname, auth) {
     }
 };
 
+
 /**
  * Given a track identification number and the apikey string
  * returns all the track data.
@@ -73,3 +74,29 @@ const getLyrics = async function(trackId, auth) {
         throw error;
     }
 };
+
+
+const getAlbum = async function(
+    artist_id, 
+//    artist_mbid, 
+    g_album_name, 
+    api_key,
+//    s_release_date, 
+//    page, 
+//    page_size)
+) 
+{
+    const apiUrl = `https://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=${artist_id}&s_release_date=desc&g_album_name=${g_album_name}&apikey=${api_key}`;
+
+    try {
+        
+        const data = await getAPIData(apiUrl, api_key);
+        return data.message.body;
+    } catch (error) {
+        console.log('Error fetching Album:', error);
+        throw error;
+    }
+    
+
+
+}
