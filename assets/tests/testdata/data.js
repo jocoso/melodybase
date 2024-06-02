@@ -54,13 +54,13 @@ describe('Testing the function getLyrics return the lyrics.', () => {
         const track = getTrack(songName, artistName, apiKey);
 
         track.then(trackdata => {
-            console.log(trackdata.track_id);
+            console.log(trackdata);
             if(trackdata.has_lyrics) {
                 console.log("we got Lyrics!");
                 const lyrics = getLyrics(trackdata.track_id, apiKey);
-                // lyrics.then(lyricdata => {
-                //     console.log(lyricdata);
-                // });
+                lyrics.then(lyricdata => {
+                    console.log(lyricdata);
+                });
             }
         });
 
