@@ -1,131 +1,99 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-    <head>
+<head>
+    <meta charset="UTF-8" />
+    <title>Melodybase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
 
-        <meta charset="UTF-8" />
-        <title>Melodybase</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-        />
-        <link rel="stylesheet" href="./assets/css/reset.css" />
-        <link rel="stylesheet" href="./assets/css/style.css" />
+<body>
 
-    </head>
+    <header class="header">
+        <h1 class="title has-text-centered is-uppercase">MelodyBase</h1>
+        <h2 class="subtitle has-text-centered is-uppercase is-italic">
+            Your ultimate music library
+        </h2>
+    </header>
 
-    <body>
+    <main class="main-content">
+        <section class="section">
+            <div class="container">
+                <div class="buttons is-centered">
+                    <button class="button is-primary is-rounded is-darkblue" id="findMusic">
+                        Find your music here
+                    </button>
+                </div>
 
-        <header>
-            <h1 class="title has-text-centered is-uppercase">MelodyBase</h1>
-            <h2 class="subtitle has-text-centered is-uppercase is-italic">
-                Your ultimate music library
-            </h2>
-        </header>
-
-        <main>
-            <section>
-                <div class="container">
-
-                    <h2 class="subtitle py-6">Find Music here</h2>
-
-                    </div>
-                        <button class="button is-primary is-rounded" id="findMusic">
-                            Find your music here
-                        </button>
-                    </div>
-
-                    <div class="album">
-                        <img src=" ./assets/images/album-download.png" alt="placeholder" />
-                    </div>
-
-                    <div id="songname">
-                        <h3>Song Name</h3>
-                    </div>
-
-                    <div id="artistname">
-                        <h3>Artist name</h3>
-                    </div>
-
-                    <div id="lyrics">
-                        <h3>Lyrics</h3>
-                    </div>
-
-                    <div id="albumcover">
-                        <h3>Album Cover</h3>
-                        <img id="albumcover" src="" alt="Album Cover" />
-                    </div>
-
-                    <div id="albumname">
-                        <h3>Album Name</h3>
-                    </div>
-            </section>
-
-            <div class="modal isactive">
-                <div class="modal-background"></div>
-
-               <!--  FORM  -->
-                <div class="modal-content has-background-white py-5 px-5">
-                    <h3 class="title mb-6">Enter song name</h3>
-                        
-                    <form id="field">
-
-                        <label class="label">Artist Name</label>
-                        <!-- --------------------------------- -->
-                        <div class="control">
-                            <input type="text" name="container-artistname" class="input" placeholder="Artist Name" />
+                <div class="columns is-centered is-multiline mt-5">
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <figure class="image is-1by1">
+                                <img src="./assets/images/album-download.png" alt="Album placeholder" />
+                            </figure>
                         </div>
+                    </div>
 
-
-                        <label class="label"> Name of the song</label>
-                        <!-- --------------------------------- -->
-                        <div class="control">
-                            <input type="text" name="container-songname" class="input" value="" placeholder="Song Name" />
+                    <div class="column is-one-quarter">
+                        <div class="box" id="songname">
+                            <h3 class="title is-4">Song Name</h3>
                         </div>
-                        
-                        
-                        <input type="submit" value="search">
-                        <!-- <button class="button is-primary is-rounded" id="search"> Search</button> -->
+                    </div>
 
-                    </form>
+                    <div class="column is-one-quarter">
+                        <div class="box" id="artistname">
+                            <h3 class="title is-4">Artist Name</h3>
+                        </div>
+                    </div>
 
+                    <div class="column is-one-quarter">
+                        <div class="box" id="albumname">
+                            <h3 class="title is-4">Album Name</h3>
+                        </div>
+                    </div>
+
+                    <div class="column is-full">
+                        <div class="box" id="lyrics">
+                            <h3 class="title is-4">Lyrics</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
-    
-        <!-- <div class ="album">
-            <img src=" ./assets/images/album-download.png"  alt ="placeholder">
+        </section>
+
+        <div class="modal isactive">
+            <div class="modal-background"></div>
+            <div class="modal-content has-background-white py-5 px-5">
+                <h3 class="title mb-6">Enter Song Information</h3>
+                <form id="field">
+                    <label class="label">Artist Name</label>
+                    <div class="control">
+                        <input type="text" name="container-artistname" class="input" placeholder="Artist Name" />
+                    </div>
+                    <label class="label">Name of the song</label>
+                    <div class="control">
+                        <input type="text" name="container-songname" class="input" placeholder="Song Name" />
+                    </div>
+                    <input type="submit" value="search">
+                </form>
+            </div>
         </div>
-        <h2> Album Name</h2>
-        <section>
-            <div class ="container-songname">
-            <h3> Song Name </h3>
-            </div>
-            <div class ="container-artistname">
-            <h3>Artist name</h3>
-            </div>
-            <div class ="container-lyrics">
-            <h3> Lyrics</h2>
-            </div>
-        </section> -->
-        </main>
+    </main>
 
-        <footer>
-            <p> MelodyBase Corporation </p>
-        </footer>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Powered by Musixmatch API --- Created by Joshua Collado, Tuba Muktadir, and Bo Amarant</p>
+        </div>
+    </footer>
 
-        <!-- <div class ="modal is-active">
-        <div class ="modal-background"></div> -->
-
-        <div class ="modal-content has background-white py-5 px-5"></div>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <!-- <div class ="modal is-active">
-        <div class ="modal-background"></div> -->
-
-        <div class ="modal-content has background-white py-5 px-5"></div>
-        <script src="./assets/js/logic.js"></script>
-        <script src="./assets/js/data.js"></script>
-
-    </body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/data.js"></script>
+</body>
 </html>
