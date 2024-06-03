@@ -10,6 +10,7 @@ html, body {
     flex-direction: column;
 }
 
+/* Header styling */
 .header {
     background-color: var(--darkblue); 
     padding: 1rem 0; 
@@ -19,16 +20,19 @@ html, body {
     color: var(--white); 
 }
 
+/* Main content styling */
 .main-content {
     flex: 1;
     background-color: lightsteelblue;
 }
 
+/* Custom class for button */
 .button.is-darkblue{
     background-color: var(--darkblue);
     color: var(--white);
 }
 
+/* Footer Styling */
 .footer {
     background-color: var(--darkblue); 
     color: var(--white); 
@@ -36,6 +40,7 @@ html, body {
     text-align: center;
 }
 
+/* Mobile complatibility */
 @media screen and (max-width: 768px) {
     main,
     nav {

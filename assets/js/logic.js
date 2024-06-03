@@ -66,19 +66,20 @@ async function displayTopTracks() {
 }
 
 $(document).ready(() => {
-    // Modal handling
     const $findMusicBtn = $('#findMusic');
-    const $modalBg = $('.modal-background');
-    const $modal = $('.modal');
-    
+    const $modal = $('#modal');
+
+    // Show modal on button click
     $findMusicBtn.on('click', () => {
-        $modal.addClass('is-active');
-    });
-    $modalBg.on('click', () => {
-        $modal.removeClass('is-active');
+        $modal.css('display', 'block');
     });
 
-    // Search button handling
+    // Hide modal when modal background is clicked
+    $('.modal-background').on('click', () => {
+        $modal.css('display', 'none');
+    });
+
+    // Form submission event
     $('#field').on("submit", (e) => {
         e.preventDefault();
 
@@ -89,6 +90,7 @@ $(document).ready(() => {
         // Sanity check
         if (songName && artistName) {
             displaySongInfo(songName, artistName);
+            $modal.css('display', 'none'); // Hide the modal after submission
         } else {
             alert('Please enter both song name and artist name.');
         }
