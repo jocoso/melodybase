@@ -2,12 +2,39 @@ async function displaySongInfo(songName, artistName) {
     try {
         const auth = "db1815126935bc7fef98a221fafbf0fe";
         const track = await getTrack(songName, artistName, auth);
+        
+        const albumImg = $('#album-img');
+
+        console.log(track);
+
+        // const album = await getAlbum()
 
         if (track) {
             $('#songname').text(`Song Name: ${track.track_name}`); //Adding information to HTML
             $('#artistname').text(`Artist Name: ${track.artist_name}`);
             $('#albumname').text(`Album Name: ${track.album_name}`);
-            console.log(track);
+            
+            let albums = await getAlbum(track.artist_id, 1, auth);
+            await snitcher("ALBUMS CONTENT", albums);
+            if(albums) {
+                // await snitcher("IS ALBUMS UNDEFINED?", albums);
+                await snitcher("WHAT IS IN ALBUMS?", albums);
+
+                // await snitcher("CHECKING IF ALBUMS ARE AN ARRAY OF OBJECT AND WHAT AM I RETURNING", albums);
+                // await snitcher("WHAT TYPE IS ALBUMS", typeof albums);
+
+                let target = albums.album_list.find(album => {
+                   return album.album_name === track.album_name;
+                });
+                
+                console.log(target);
+                
+                if(target !== undefined){
+                    //await snitcher("TRACK NAME", track.album_name);
+                    await snitcher("TARGET", target);
+                }
+                
+            }
             
             if (track.has_lyrics) {
                 const lyricsData = await getLyrics(track.track_id, auth); //Adding lyrics to HTML
