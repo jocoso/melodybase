@@ -75,6 +75,23 @@ const getLyrics = async function(trackId, auth) {
     }
 };
 
+/**
+ * Given an API key, this function returns a Promise
+ * with the top tracks data from the Last.fm API.
+ * @param {string} auth The API key
+ * @returns {Promise} The API promises to return the top tracks
+ */
+const getTopTracks = async function(auth) {
+    const apiUrl = `http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${auth}&format=json`;
+
+    try {
+        const data = await getAPIData(apiUrl, auth);
+        return data.tracks.track;
+    } catch (error) {
+        console.error('Error fetching top tracks:', error);
+        throw error;
+    }
+};
 
 const getAlbum = async function(
     artist_id, 
